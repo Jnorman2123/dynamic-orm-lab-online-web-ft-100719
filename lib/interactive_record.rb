@@ -64,7 +64,7 @@ class InteractiveRecord
     elsif attribute.has_key?("name")
       DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE name = ?", [attribute.values.to_s])
     elsif attribute.has_key?("grade")
-      DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE grade = #{attribute}.values.to_i")
+      DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE grade = ?", [attribute.values.to_i])
     end
   end
 end

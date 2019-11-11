@@ -62,6 +62,8 @@ class InteractiveRecord
     self.class.column_names.each do |col_name|
         if col_name == "id"
           DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE id = ?", attribute.to_i)
+        elsif col_name == "name"
+          DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE name = ?", attribute.to_s)
     end
   end
 

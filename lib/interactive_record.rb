@@ -66,6 +66,7 @@ class InteractiveRecord
           DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE name = ?", attribute.to_s)
         elsif col_name == "grade"
           DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE grade = ?", attribute.to_i)
+        end 
     end
   end
 

@@ -59,7 +59,10 @@ class InteractiveRecord
   end
 
   def self.find_by(attribute)
-
+    self.class.column_names.each do |col_name|
+        if col_name == "id"
+          DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE id = ?", attribute.to_i)
+    end
   end
 
 end

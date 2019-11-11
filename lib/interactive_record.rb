@@ -59,6 +59,7 @@ class InteractiveRecord
   end
 
   def self.find_by(attribute)
+    binding.pry
     if attribute.has_key?("id")
       DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE id = ?", [attribute.values.to_i])
     elsif attribute.has_key?("name")

@@ -59,11 +59,11 @@ class InteractiveRecord
   end
 
   def self.find_by(attribute)
-    if attribute.keys == "id"
+    if attribute.has_key?("id")
       DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE id = #{attribute}.values.to_i")
-    elsif attribute.keys == "name"
+    elsif attribute.has_key?("name")
       DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE name = #{attribute}.values.to_i")
-    elsif attribute.keys == "grade"
+    elsif attribute.has_key?("grade")
       DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE grade = #{attribute}.values.to_i")
     end
   end

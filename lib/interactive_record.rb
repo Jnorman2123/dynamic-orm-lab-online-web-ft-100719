@@ -59,14 +59,12 @@ class InteractiveRecord
   end
 
   def self.find_by(attribute)
-    self.column_names.each do |col_name|
-        if col_name == "id"
-          DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE id = ?", [attribute])
-        elsif col_name == "name"
-          DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE name = ?", [attribute])
-        elsif col_name == "grade"
-          DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE grade = >?", [attribute])
-        end
+    if attribute.key == "id"
+      DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE id = ?", [attribute.value])
+    elsif attribute.key == "name"
+      DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE name = ?", [attribute.value])
+    elsif attribute.key == "grade"
+      DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE grade = >?", [attribute.value])
     end
   end
 end
